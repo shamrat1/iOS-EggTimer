@@ -16,23 +16,19 @@ class ViewController: UIViewController {
     var timer = Timer()
     var counter = 0
     var isRunning = false
+    let dictionary = [
+        "Soft": 5,
+        "Medium": 10,
+        "Hard": 15
+    ]
     
     var url = Bundle.main.url(forResource: "alarm", withExtension: ".wav")
-    
-    
     @IBOutlet weak var progressView: UIProgressView!
     
     
     @IBAction func eggButton(_ sender: UIButton) {
-            if sender.currentTitle == "Soft" {
-                time = 5
-            }else if sender.currentTitle == "Medium" {
-                time = 10
-            }else {
-                time = 15
-            }
-            
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(cooking), userInfo: nil, repeats: true)
+        time = dictionary[sender.currentTitle!]!
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(cooking), userInfo: nil, repeats: true)
     }
     
     
